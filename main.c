@@ -2,6 +2,6 @@
 
 int main(int argc, char **argv)
 {
-	printf("Hello Chatpeth!\n");
+	printf("Hello!\n");
 	return(0);	
 }
