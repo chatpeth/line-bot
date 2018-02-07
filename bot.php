@@ -1,4 +1,5 @@
 <?php
+/*
 $access_token = 'rNyL30zqBBdJuZZmSavU6xyK2bDcefL89eKp0eWTOV+b6cGVJlYwxQ0vROCzGhzYtRE7hBqLttYOoSuu21i1gDBfNRlbgyF0SAEGitERV0bg9QdToiyTIGqasjrkAH668beY5+K5G08oDP9zvfBEEAdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
@@ -40,8 +41,8 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			//echo $result . "\r\n";
+			echo $result . "\r\n";
 		}
 	}
 }
-echo "OK";
+echo "OK";*/
