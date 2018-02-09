@@ -1,49 +1,28 @@
-#!/usr/local/bin/php –q 
-
 <?php 
-// by John Schimmel 
-// modified from the code at http://www.zend.com/pecl/tutorials/sockets.php
-// 
-// run this from terminal on mac os x or another command line interface.
+// set some variables
+$host = "127.0.0.1";
+$port = 25003;
+// don't timeout!
+set_time_limit(0);
+// create socket
+$socket = socket_create(AF_INET, SOCK_STREAM, 0) or die("Could not create socket\n");
+// bind socket to port
+$result = socket_bind($socket, $host, $port) or die("Could not bind to socket\n");
+// start listening for connections
+$result = socket_listen($socket, 3) or die("Could not set up socket listener\n");
 
-// Set time limit to indefinite execution 
-set_time_limit (0); 
-
-// Set the ip and port we will listen on 
-$address = '127.0.0.1'; 
-$port = 9000; 
-
-// Create a TCP Stream socket 
-$sock = socket_create(AF_INET, SOCK_STREAM, 0); 
-echo "PHP Socket Server started at " . $address . " " . $port . "\n";
-
-// Bind the socket to an address/port 
-socket_bind($sock, $address, $port) or die('Could not bind to address'); 
-// Start listening for connections 
-socket_listen($sock); 
-
-//loop and listen
-
-while (true) {
-    /* Accept incoming requests and handle them as child processes */ 
-    $client = socket_accept($sock); 
-    
-    // Read the input from the client – 1024 bytes 
-    $input = socket_read($client, 1024); 
-    
-    // Strip all white spaces from input 
-    $output = ereg_replace("[ \t\n\r]","",$input)."\0"; 
-    
-    // Display output back to client 
-    socket_write($client, "you wrote " . $input . "\n"); 
-    
-    // display input on server side
-    echo "received: " . $input . "\n";
-}
-
-// Close the client (child) socket 
-socket_close($client); 
-
-// Close the master sockets 
-socket_close($sock); 
+// accept incoming connections
+// spawn another socket to handle communication
+$spawn = socket_accept($socket) or die("Could not accept incoming connection\n");
+// read client input
+$input = socket_read($spawn, 1024) or die("Could not read input\n");
+// clean up input string
+$input = trim($input);
+echo "Client Message : ".$input;
+// reverse client input and send back
+$output = strrev($input) . "\n";
+socket_write($spawn, $output, strlen ($output)) or die("Could not write output\n");
+// close sockets
+socket_close($spawn);
+socket_close($socket);
 ?>
