@@ -2,5 +2,4 @@
 // set some variables
 echo "Chatpeth";
 
-
 ?>
