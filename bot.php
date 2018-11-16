@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 			}
 			else
 			{
-				$text = "Hello";
+				$text = strval(strlen(msgPayload));
 			}
 			//$text = "Hello " . $event['message']['text'];
 			
