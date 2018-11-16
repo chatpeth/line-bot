@@ -14,7 +14,7 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			$msgPayload = $event['message']['text'];
 			//$text = "Chatpeth Kenanan";
-			if(msgPayload == 'Hi')
+			if(strcmp(msgPayload, "Hi") == 0)
 			{
 				$text = "Hi";
 			}
