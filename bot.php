@@ -12,11 +12,11 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$extra = [];
-			$args = func_get_args();
-            $extra = array_slice($args, 1)
-			$text = "Chatpeth Kenanan"
-			text = array_merge([$text], $extra);
+			//$extra = [];
+			//$args = func_get_args();
+            //$extra = array_slice($args, 1);
+			$text = "Chatpeth Kenanan";
+			//$text = array_merge([$text], $extra);
 			//$text = "Hello " . $event['message']['text'];
 			
 			
