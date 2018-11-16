@@ -13,7 +13,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			//$text = "Hello" . $event['message']['text'];
-			$text = "Chatpeth Kenanan\r\n"
+			$text = "Chatpeth Kenanan\r"
 			
 			$replyToken = $event['replyToken'];
 
